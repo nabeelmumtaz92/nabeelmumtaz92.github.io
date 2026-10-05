@@ -6,21 +6,66 @@
 <title>RepTracker — UX Case Study | Nabeel Mumtaz</title>
 <meta name="description" content="UX case study: RepTracker — the step counter for strength training. Unhackable rep validation via Apple Watch, weekly cash rewards. Designed and engineered by Nabeel Mumtaz, team of one.">
 <style>
-:root{--paper:#f6f2e9;--paper-deep:#efe8d8;--card:#fffdf8;--ink:#1c2420;--ink-soft:#4a554f;--ink-faint:#7b857e;--line:#ddd3bd;--accent:#1e4d38;--accent-deep:#143526;--accent-soft:#e4ecdf;--accent-line:#cdd9c6;--dark:#1b2b22;--radius:18px}
-body.reptracker{--accent:#c2410c;--accent-deep:#7c2d12;--accent-soft:#fdeee2;--accent-line:#f0cdb0;--dark:#241a10}
+/* Shared portfolio styles — House Call base, per-page accents via body class */
+:root{
+  --paper:#f6f2e9;
+  --paper-deep:#efe8d8;
+  --card:#fffdf8;
+  --ink:#1c2420;
+  --ink-soft:#4a554f;
+  --ink-faint:#7b857e;
+  --line:#ddd3bd;
+  --accent:#1e4d38;
+  --accent-deep:#143526;
+  --accent-soft:#e4ecdf;
+  --accent-line:#cdd9c6;
+  --dark:#1b2b22;
+  --radius:18px;
+}
+body.reptr...{
+  --accent:#c2410c;
+  --accent-deep:#7c2d12;
+  --accent-soft:#fdeee2;
+  --accent-line:#f0cdb0;
+  --dark:#241a10;
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+body{
+  font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
 .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
-.nav{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
-.nav-inner{max-width:1080px;margin:0 auto;padding:13px 28px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1080px;margin:0 auto;padding:13px 28px;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+}
 .nav .brand{font-weight:800;font-size:17px;color:var(--ink);text-decoration:none;line-height:1.3}
 .nav .brand small{display:block;font-weight:400;color:var(--ink-faint);font-size:11.5px}
 .nav-links{display:flex;gap:6px;flex-wrap:wrap}
-.nav-links a{font-size:14px;font-weight:600;color:var(--ink-soft);text-decoration:none;padding:8px 15px;border-radius:999px}
+.nav-links a{
+  font-size:14px;font-weight:600;color:var(--ink-soft);text-decoration:none;
+  padding:8px 15px;border-radius:999px;
+}
 .nav-links a:hover{background:var(--accent-soft);color:var(--accent-deep)}
 .nav-links a.active{background:var(--accent);color:#fff}
+
+/* ---------- hero ---------- */
 .hero{padding:72px 0 48px;text-align:left}
-.kicker{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-line);padding:6px 14px;border-radius:999px;margin-bottom:22px}
+.kicker{
+  display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-line);
+  padding:6px 14px;border-radius:999px;margin-bottom:22px;
+}
 .hero h1{font-size:clamp(38px,5.4vw,62px);line-height:1.08;letter-spacing:-.02em;font-weight:800;max-width:16ch}
 .hero h1 em{font-style:normal;color:var(--accent)}
 .hero .lede{font-size:19px;color:var(--ink-soft);max-width:60ch;margin-top:18px}
@@ -28,6 +73,8 @@ body{font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;bac
 .meta div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
 .meta dt{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
 .meta dd{font-size:15px;font-weight:600;margin-top:4px}
+
+/* ---------- sections ---------- */
 section{padding:52px 0;border-top:1px solid var(--line)}
 section h2{font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
 section h3{font-size:26px;letter-spacing:-.01em;margin-bottom:14px;font-weight:750}
@@ -35,51 +82,230 @@ section p{color:var(--ink-soft);max-width:68ch;margin-bottom:14px;font-size:16.5
 section p strong{color:var(--ink)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 @media(max-width:760px){.two{grid-template-columns:1fr}}
+
 .callout{background:var(--dark);color:#f2efe6;border-radius:var(--radius);padding:28px 30px;margin-top:8px}
 .callout p{color:#d8d4c6;margin:0;font-size:16px}
 .callout p strong{color:#fff}
+
+/* ---------- figma live embed ---------- */
 .figma-embed{position:relative;width:100%;padding-top:62.5%;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin-top:18px}
 .figma-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 @media (max-width:640px){.figma-embed{padding-top:120%}}
+
+/* ---------- screens ---------- */
 .screens{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px;margin-top:30px}
-.screen-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px 24px;display:flex;flex-direction:column;align-items:center}
-.phone{width:100%;max-width:250px;border-radius:26px;overflow:hidden;box-shadow:0 18px 40px -18px rgba(20,35,28,.35);border:1px solid #cfc4a8;background:var(--paper-deep)}
-.phone.placeholder{aspect-ratio:445/900;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed #c9bfa4;color:var(--ink-faint);font-size:13.5px;text-align:center;padding:20px;gap:8px}
-.phone.placeholder .dot{width:44px;height:44px;border-radius:50%;background:#e7dfcb;display:flex;align-items:center;justify-content:center;font-size:20px}
+.screen-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 18px 24px;display:flex;flex-direction:column;align-items:center;
+}
+.phone{
+  width:100%;max-width:250px;border-radius:26px;overflow:hidden;
+  box-shadow:0 18px 40px -18px rgba(20,35,28,.35);border:1px solid #cfc4a8;background:var(--paper-deep);
+}
+.phone img{display:block;width:100%;height:auto}
+.phone.placeholder{
+  aspect-ratio:445/900;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border:2px dashed #c9bfa4;color:var(--ink-faint);font-size:13.5px;text-align:center;padding:20px;gap:8px;
+}
+.phone.placeholder .dot{
+  width:44px;height:44px;border-radius:50%;background:#e7dfcb;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+}
 .screen-card h4{font-size:16px;margin:18px 0 6px;font-weight:750}
 .screen-card .num{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.12em;margin-bottom:2px}
 .screen-card p{font-size:14px;color:var(--ink-soft);margin-bottom:10px;text-align:left;width:100%}
-.screen-card .decision{background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:12px;padding:10px 13px;font-size:13px;color:var(--ink);width:100%}
-.screen-card .decision b{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.screen-card .decision{
+  background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:12px;
+  padding:10px 13px;font-size:13px;color:var(--ink);width:100%;
+}
+.screen-card .decision b{
+  display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:3px;
+}
+
+/* ---------- feature lists ---------- */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:24px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.feat b{display:block;margin-bottom:6px;font-size:15px}
+.feat span{font-size:14px;color:var(--ink-soft)}
+
+/* ---------- design system ---------- */
 .principles{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
 .principle{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
 .principle b{display:block;margin-bottom:6px;font-size:15px}
 .principle span{font-size:14px;color:var(--ink-soft)}
+
+/* ---------- what's next ---------- */
 .next-list{list-style:none;margin-top:6px;display:grid;gap:10px}
 .next-list li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;font-size:15px;color:var(--ink-soft)}
 .next-list li b{color:var(--ink)}
-.next-list li .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8a6d2f;background:#f3ead2;border:1px solid #e2d3a8;border-radius:999px;padding:2px 10px;margin-left:10px;vertical-align:1px}
+.next-list li .tag{
+  display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:#8a6d2f;background:#f3ead2;border:1px solid #e2d3a8;border-radius:999px;
+  padding:2px 10px;margin-left:10px;vertical-align:1px;
+}
+
+/* ---------- outcomes ---------- */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:24px}
 .stat{background:var(--dark);color:#f2efe6;border-radius:14px;padding:20px}
 .stat .n{font-size:30px;font-weight:800;letter-spacing:-.02em}
 .stat .t{font-size:13.5px;color:#cfccc0;margin-top:4px}
-footer{border-top:1px solid var(--line);padding:34px 0 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;color:var(--ink-faint);font-size:14px}
+
+footer{
+  border-top:1px solid var(--line);padding:34px 0 48px;display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:12px;color:var(--ink-faint);font-size:14px;
+}
 footer a{color:var(--accent);font-weight:600;text-decoration:none}
 footer a:hover{text-decoration:underline}
+
 </style>
 </head>
-<body class="reptracker">
-<nav class="nav"><div class="nav-inner"><a class="brand" href="index.html">Nabeel Mumtaz<small>Full Stack Software Engineer &amp; UX/UI Designer</small></a><div class="nav-links"><a href="index.html">Home</a><a href="returnit.html">Return It</a><a href="fleetfuel.html">FleetFuel</a><a href="rishtaaunty.html">RishtaAunty</a><a href="reptracker.html" class="active">RepTracker</a><a href="portal.html">Portal</a><a href="uac.html">UAC</a><a href="ai-tooling.html">AI Tooling</a><a href="about.html">About</a></div></div></nav>
+<body class="reptr...">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">Nabeel Mumtaz<small>Full Stack Software Engineer &amp; UX/UI Designer</small></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="returnit.html">Return It</a>
+      <a href="fleetfuel.html">FleetFuel</a>
+      <a href="rishtaaunty.html">RishtaAunty</a>
+      <a href="reptracker.html" class="active">RepTracker</a>
+      <a href="parallel.html">Parallel</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</nav>
+
 <div class="wrap">
-<div class="hero"><span class="kicker">UX Case Study · iOS + Watch App</span><h1>RepTracker. <em>The step counter for strength training.</em></h1><p class="lede">Designing an app that turns gym reps into weekly cash rewards. Apple Watch sensors validate every rep automatically — three signals have to agree before a claim pays out — so lifters can earn real gift cards for work that can't be faked. Product spec, nine technical briefs, and a validation plan are done; designs are being built in Figma now.</p><dl class="meta"><div><dt>Role</dt><dd>Founder, Designer &amp; Engineer</dd></div><div><dt>Timeline</dt><dd>2026 – Present</dd></div><div><dt>Platform</dt><dd>iOS + Apple Watch</dd></div><div><dt>Status</dt><dd>MVP in progress · designs in Figma</dd></div></dl></div>
-<section><h2>The problem</h2><h3>45 million Americans lift weights. Nobody rewards them.</h3><p>Walkers have Steppa, runners have Strava — but lifters have nothing. Step-counting reward apps work because steps auto-track and can't be faked. Strength training is different: reps require manual logging, and manual logging invites fraud.</p><p>Existing answers both miss. Video-proof apps add real friction — nobody films every set. Manual-logging apps just trust the honor system with money on the line. <strong>RepTracker is the gap:</strong> a frictionless, unhackable way for lifters to earn cash for their reps.</p></section>
-<section><h2>The approach</h2><h3>The watch is ground truth.</h3><div class="two"><div><p>The design rests on a validation idea, not a form. The user does a workout and claims "45 bench reps." The Apple Watch's accelerometer already detected the rep motion — so the system checks three signals: <strong>accelerometer</strong> (did the watch detect 45 movement cycles?), <strong>physiology</strong> (is 45 reps realistic for the duration?), and <strong>heart rate</strong> (did HR elevate appropriately?). All three align → the entry is approved and the user qualifies for the weekly reward. Claim 100 while the watch saw 45 → rejected. It's impossible to fake all three at once.</p></div><div><p>That shifts the UX job: the app doesn't need to capture the workout, just to <strong>claim it in one tap</strong> and make the verdict trustworthy. The validation states — approved, needs review, rejected — are designed like the product itself, because when money is on the line, a confusing "why did my claim fail?" screen is a trust crisis, not an error message.</p></div></div><div class="callout"><p><strong>Designing as the engineer changes the designs.</strong> Every verdict the UI can show maps 1:1 to a backend validation state from the technical spec. The weekly goal, streak, and reward marketplace all run off the same rep ledger — nothing on screen is a mockup of data that doesn't exist yet.</p></div></section>
-<section><h2>Live prototype</h2><h3>Explore the Figma prototype.</h3><p>This embed loads the live Figma file, so it updates as the designs evolve. <a href="https://www.figma.com/make/ovdC1DTiPAKb3QcyIWyeN7/Untitled?p=f&amp;t=D2bitZjOz82zotfH-0" target="_blank" rel="noopener">Open in Figma &rarr;</a></p><div class="figma-embed"><iframe src="https://www.figma.com/embed?embed_host=share&amp;url=https%3A%2F%2Fwww.figma.com%2Fmake%2FovdC1DTiPAKb3QcyIWyeN7%2FUntitled%3Fp%3Df%26t%3DD2bitZjOz82zotfH-0" allowfullscreen loading="lazy" title="RepTracker Figma prototype"></iframe></div></section>
-<section><h2>The screens</h2><h3>Designs in progress — the core loop is mapped.</h3><p>The Figma file is still early, so these are the flows being designed, not finished screens. Each one does exactly one job in the weekly habit loop.</p><div class="screens"><div class="screen-card"><div class="num">01</div><div class="phone placeholder"><span class="dot">🏠</span><span>In progress</span></div><h4>Home</h4><p>Weekly goal progress (50 points — 30 reps = 1 point), current streak, and today's validation status at a glance. The week is the unit of the product — everything orients around it.</p><div class="decision"><b>Design decision</b>Weekly goal, not daily. The affiliate reward pays out on the week's total, so the screen sells the weekly habit the business model needs.</div></div><div class="screen-card"><div class="num">02</div><div class="phone placeholder"><span class="dot">✅</span><span>In progress</span></div><h4>Claim reps</h4><p>One tap to claim the workout the watch already saw. The verdict comes back as approved, needs review, or rejected — with the reason stated plainly, never a code.</p><div class="decision"><b>Design decision</b>The workout already happened; claiming should cost seconds. Rejection states carry reasons because a lifter who doesn't understand "why" won't trust the next payout.</div></div><div class="screen-card"><div class="num">03</div><div class="phone placeholder"><span class="dot">🎁</span><span>In progress</span></div><h4>Rewards marketplace</h4><p>Hit 50 points for the week, then claim gift card rewards from brand partners (Optimum Nutrition, Rogue, Nike, Amazon) — points stack, so bigger totals unlock bigger payouts.</p><div class="decision"><b>Design decision</b>Rewards live one tap from Home, not buried in settings. The payout is the product's emotional peak; the design treats it that way.</div></div><div class="screen-card"><div class="num">04</div><div class="phone placeholder"><span class="dot">📊</span><span>In progress</span></div><h4>Activity detail</h4><p>Rep-by-rep breakdown of a validated workout: exercise classification, movement cycles, heart-rate curve. This is where "unhackable" becomes visible to the user.</p><div class="decision"><b>Design decision</b>Show the evidence, not the algorithm. The user sees their own movement and heart rate — the same signals that approved the claim — which makes the verdict feel earned.</div></div></div></section>
-<section><h2>Design principles</h2><h3>Four rules the screens follow.</h3><div class="principles"><div class="principle"><b>💰 Money on the line, plainly stated</b><span>What the user earned and why is on the screen — no "pending" mysteries when a reward is involved.</span></div><div class="principle"><b>🛡️ Fraud-proof by default</b><span>Validation states are first-class designs, not error messages. The sensor verdict is the feature.</span></div><div class="principle"><b>👆 One tap to claim</b><span>The workout already happened. Claiming it should take seconds, not a logging session.</span></div><div class="principle"><b>⌚ Watch outranks phone</b><span>Accelerometer data settles disputes. The design never asks the user to prove what the sensor already knows.</span></div></div></section>
-<section><h2>What's next</h2><h3>Validation first — the spec defines what "working" means.</h3><p>The test criteria set hard gates before scale: these are the numbers the MVP has to clear, and they're designed into the product (every verdict, streak, and redemption is measurable from day one).</p><ul class="next-list"><li><b>Real-gym validation</b> — rep counting accuracy &gt;95% across 500 real workouts; &gt;90% of cheating attempts caught <span class="tag">MVP gate</span></li><li><b>Habit validation</b> — D30 retention &gt;35%; weekly goal achievement &gt;45%; weekly redemption rate &gt;70% <span class="tag">MVP gate</span></li><li><b>Apple Watch MVP</b> — HealthKit rep detection, exercise classification, 3-signal validation; Android + Samsung Watch after <span class="tag">In progress</span></li><li><b>Premium tier</b> — AI form feedback, 1RM estimates, programming, analytics at $9.99/mo <span class="tag">Planned</span></li><li><b>B2B</b> — coach white-label and gym challenges for retention and distribution <span class="tag">Planned</span></li></ul></section>
-<section><h2>Outcomes &amp; context</h2><h3>A research-backed bet on an open window.</h3><p>The product spec leans on published validation: rep counting from smartwatch accelerometers holds <strong>0.92% error</strong> in research, and deep-learning exercise classification reaches <strong>99.96% accuracy across 10 exercises</strong>. The reward model is Paceline's proven weekly-affiliate playbook ($29.5M Series A, 500K+ users) — applied to lifting, where no competitor exists yet.</p><div class="stats"><div class="stat"><div class="n">45M</div><div class="t">US strength trainers with no reward app</div></div><div class="stat"><div class="n">0.92%</div><div class="t">rep-counting error in published research</div></div><div class="stat"><div class="n">99.96%</div><div class="t">exercise classification accuracy, 10 exercises</div></div><div class="stat"><div class="n">8 wks</div><div class="t">MVP timeline in the technical briefs</div></div></div><p style="margin-top:22px">This is a design-in-progress case study, and I'm not dressing that up. The product thinking — the spec, the validation plan, the engineering briefs — is complete. The Figma file is early. This page will grow as the screens do.</p></section>
+  <div class="hero">
+    <span class="kicker">UX Case Study · iOS + Watch App</span>
+    <h1>RepTracker. <em>The step counter for strength training.</em></h1>
+    <p class="lede">Designing an app that turns gym reps into weekly cash rewards. Apple Watch sensors validate every rep automatically — three signals have to agree before a claim pays out — so lifters can earn real gift cards for work that can't be faked. Product spec, nine technical briefs, and a validation plan are done; designs are being built in Figma now.</p>
+    <dl class="meta">
+      <div><dt>Role</dt><dd>Founder, Designer &amp; Engineer</dd></div>
+      <div><dt>Timeline</dt><dd>2026 – Present</dd></div>
+      <div><dt>Platform</dt><dd>iOS + Apple Watch</dd></div>
+      <div><dt>Status</dt><dd>MVP in progress · designs in Figma</dd></div>
+    </dl>
+  </div>
+
+  <section>
+    <h2>The problem</h2>
+    <h3>45 million Americans lift weights. Nobody rewards them.</h3>
+    <p>Walkers have Steppa, runners have Strava — but lifters have nothing. Step-counting reward apps work because steps auto-track and can't be faked. Strength training is different: reps require manual logging, and manual logging invites fraud.</p>
+    <p>Existing answers both miss. Video-proof apps add real friction — nobody films every set. Manual-logging apps just trust the honor system with money on the line. <strong>RepTracker is the gap:</strong> a frictionless, unhackable way for lifters to earn cash for their reps.</p>
+  </section>
+
+  <section>
+    <h2>The approach</h2>
+    <h3>The watch is ground truth.</h3>
+    <div class="two">
+      <div>
+        <p>The design rests on a validation idea, not a form. The user does a workout and claims "45 bench reps." The Apple Watch's accelerometer already detected the rep motion — so the system checks three signals: <strong>accelerometer</strong> (did the watch detect 45 movement cycles?), <strong>physiology</strong> (is 45 reps realistic for the duration?), and <strong>heart rate</strong> (did HR elevate appropriately?). All three align → the entry is approved and the user qualifies for the weekly reward. Claim 100 while the watch saw 45 → rejected. It's impossible to fake all three at once.</p>
+      </div>
+      <div>
+        <p>That shifts the UX job: the app doesn't need to capture the workout, just to <strong>claim it in one tap</strong> and make the verdict trustworthy. The validation states — approved, needs review, rejected — are designed like the product itself, because when money is on the line, a confusing "why did my claim fail?" screen is a trust crisis, not an error message.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <p><strong>Designing as the engineer changes the designs.</strong> Every verdict the UI can show maps 1:1 to a backend validation state from the technical spec. The weekly goal, streak, and reward marketplace all run off the same rep ledger — nothing on screen is a mockup of data that doesn't exist yet.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Live prototype</h2>
+    <h3>Explore the Figma prototype.</h3>
+    <p>This embed loads the live published site, so it updates as the designs evolve. <a href="https://frown-chorus-86480069.figma.site" target="_blank" rel="noopener">Open the live site &rarr;</a></p>
+    <div class="figma-embed">
+      <iframe src="https://frown-chorus-86480069.figma.site" allowfullscreen loading="lazy" title="RepTracker live prototype"></iframe>
+    </div>
+  </section>
+
+  <section>
+    <h2>The screens</h2>
+    <h3>Designs in progress — the core loop is mapped.</h3>
+    <p>The Figma file is still early, so these are the flows being designed, not finished screens. Each one does exactly one job in the weekly habit loop.</p>
+
+    <div class="screens">
+      <div class="screen-card">
+        <div class="num">01</div>
+        <div class="phone placeholder"><span class="dot">🏠</span><span>In progress</span></div>
+        <h4>Home</h4>
+        <p>Weekly goal progress (50 points — 30 reps = 1 point), current streak, and today's validation status at a glance. The week is the unit of the product — everything orients around it.</p>
+        <div class="decision"><b>Design decision</b>Weekly goal, not daily. The affiliate reward pays out on the week's total, so the screen sells the weekly habit the business model needs.</div>
+      </div>
+
+      <div class="screen-card">
+        <div class="num">02</div>
+        <div class="phone placeholder"><span class="dot">✅</span><span>In progress</span></div>
+        <h4>Claim reps</h4>
+        <p>One tap to claim the workout the watch already saw. The verdict comes back as approved, needs review, or rejected — with the reason stated plainly, never a code.</p>
+        <div class="decision"><b>Design decision</b>The workout already happened; claiming should cost seconds. Rejection states carry reasons because a lifter who doesn't understand "why" won't trust the next payout.</div>
+      </div>
+
+      <div class="screen-card">
+        <div class="num">03</div>
+        <div class="phone placeholder"><span class="dot">🎁</span><span>In progress</span></div>
+        <h4>Rewards marketplace</h4>
+        <p>Hit 50 points for the week, then claim gift card rewards from brand partners (Optimum Nutrition, Rogue, Nike, Amazon) — points stack, so bigger totals unlock bigger payouts.</p>
+        <div class="decision"><b>Design decision</b>Rewards live one tap from Home, not buried in settings. The payout is the product's emotional peak; the design treats it that way.</div>
+      </div>
+
+      <div class="screen-card">
+        <div class="num">04</div>
+        <div class="phone placeholder"><span class="dot">📊</span><span>In progress</span></div>
+        <h4>Activity detail</h4>
+        <p>Rep-by-rep breakdown of a validated workout: exercise classification, movement cycles, heart-rate curve. This is where "unhackable" becomes visible to the user.</p>
+        <div class="decision"><b>Design decision</b>Show the evidence, not the algorithm. The user sees their own movement and heart rate — the same signals that approved the claim — which makes the verdict feel earned.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Design principles</h2>
+    <h3>Four rules the screens follow.</h3>
+
+    <div class="principles">
+      <div class="principle"><b>💰 Money on the line, plainly stated</b><span>What the user earned and why is on the screen — no "pending" mysteries when a reward is involved.</span></div>
+      <div class="principle"><b>🛡️ Fraud-proof by default</b><span>Validation states are first-class designs, not error messages. The sensor verdict is the feature.</span></div>
+      <div class="principle"><b>👆 One tap to claim</b><span>The workout already happened. Claiming it should take seconds, not a logging session.</span></div>
+      <div class="principle"><b>⌚ Watch outranks phone</b><span>Accelerometer data settles disputes. The design never asks the user to prove what the sensor already knows.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What's next</h2>
+    <h3>Validation first — the spec defines what "working" means.</h3>
+    <p>The test criteria set hard gates before scale: these are the numbers the MVP has to clear, and they're designed into the product (every verdict, streak, and redemption is measurable from day one).</p>
+    <ul class="next-list">
+      <li><b>Real-gym validation</b> — rep counting accuracy &gt;95% across 500 real workouts; &gt;90% of cheating attempts caught <span class="tag">MVP gate</span></li>
+      <li><b>Habit validation</b> — D30 retention &gt;35%; weekly goal achievement &gt;45%; weekly redemption rate &gt;70% <span class="tag">MVP gate</span></li>
+      <li><b>Apple Watch MVP</b> — HealthKit rep detection, exercise classification, 3-signal validation; Android + Samsung Watch after <span class="tag">In progress</span></li>
+      <li><b>Premium tier</b> — AI form feedback, 1RM estimates, programming, analytics at $9.99/mo <span class="tag">Planned</span></li>
+      <li><b>B2B</b> — coach white-label and gym challenges for retention and distribution <span class="tag">Planned</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Outcomes &amp; context</h2>
+    <h3>A research-backed bet on an open window.</h3>
+    <p>The product spec leans on published validation: rep counting from smartwatch accelerometers holds <strong>0.92% error</strong> in research, and deep-learning exercise classification reaches <strong>99.96% accuracy across 10 exercises</strong>. The reward model is Paceline's proven weekly-affiliate playbook ($29.5M Series A, 500K+ users) — applied to lifting, where no competitor exists yet.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">45M</div><div class="t">US strength trainers with no reward app</div></div>
+      <div class="stat"><div class="n">0.92%</div><div class="t">rep-counting error in published research</div></div>
+      <div class="stat"><div class="n">99.96%</div><div class="t">exercise classification accuracy, 10 exercises</div></div>
+      <div class="stat"><div class="n">8 wks</div><div class="t">MVP timeline in the technical briefs</div></div>
+    </div>
+    <p style="margin-top:22px">This is a design-in-progress case study, and I'm not dressing that up. The product thinking — the spec, the validation plan, the engineering briefs — is complete. The Figma file is early. This page will grow as the screens do.</p>
+  </section>
+
 </div>
-<footer class="wrap"><div>Designed &amp; built by <b>Nabeel Mumtaz</b> — RepTracker, 2026–Present.</div><div><a href="https://github.com/nabeelmumtaz92" target="_blank" rel="noopener">github.com/nabeelmumtaz92 ↗</a></div></footer>
+
+<footer class="wrap">
+  <div>Designed &amp; built by <b>Nabeel Mumtaz</b> — RepTracker, 2026–Present.</div>
+  <div><a href="https://github.com/nabeelmumtaz92" target="_blank" rel="noopener">github.com/nabeelmumtaz92 ↗</a></div>
+</footer>
+
 </body>
 </html>

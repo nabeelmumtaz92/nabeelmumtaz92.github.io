@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parallel — UX Case Study | Nabeel Mumtaz</title>
+<meta name="description" content="UX case study: Parallel — a ChatGPT-style chat app that runs your tasks in parallel. Type your tasks. Send once. Get everything back together. Designed by Nabeel Mumtaz, team of one.">
+<style>
+/* Shared portfolio styles — House Call base, per-page accents via body class */
+:root{
+  --paper:#f6f2e9;
+  --paper-deep:#efe8d8;
+  --card:#fffdf8;
+  --ink:#1c2420;
+  --ink-soft:#4a554f;
+  --ink-faint:#7b857e;
+  --line:#ddd3bd;
+  --accent:#1e4d38;
+  --accent-deep:#143526;
+  --accent-soft:#e4ecdf;
+  --accent-line:#cdd9c6;
+  --dark:#1b2b22;
+  --radius:18px;
+}
+body.parallel{
+  --accent:#0891b2;
+  --accent-deep:#0e5a6e;
+  --accent-soft:#e0f3f7;
+  --accent-line:#b9dfe9;
+  --dark:#10262e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1080px;margin:0 auto;padding:13px 28px;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.nav .brand{font-weight:800;font-size:17px;color:var(--ink);text-decoration:none;line-height:1.3}
+.nav .brand small{display:block;font-weight:400;color:var(--ink-faint);font-size:11.5px}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{
+  font-size:14px;font-weight:600;color:var(--ink-soft);text-decoration:none;
+  padding:8px 15px;border-radius:999px;
+}
+.nav-links a:hover{background:var(--accent-soft);color:var(--accent-deep)}
+.nav-links a.active{background:var(--accent);color:#fff}
+
+/* ---------- hero ---------- */
+.hero{padding:72px 0 48px;text-align:left}
+.kicker{
+  display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-line);
+  padding:6px 14px;border-radius:999px;margin-bottom:22px;
+}
+.hero h1{font-size:clamp(38px,5.4vw,62px);line-height:1.08;letter-spacing:-.02em;font-weight:800;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lede{font-size:19px;color:var(--ink-soft);max-width:60ch;margin-top:18px}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:36px}
+.meta div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.meta dt{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+.meta dd{font-size:15px;font-weight:600;margin-top:4px}
+
+/* ---------- sections ---------- */
+section{padding:52px 0;border-top:1px solid var(--line)}
+section h2{font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+section h3{font-size:26px;letter-spacing:-.01em;margin-bottom:14px;font-weight:750}
+section p{color:var(--ink-soft);max-width:68ch;margin-bottom:14px;font-size:16.5px}
+section p strong{color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+
+.callout{background:var(--dark);color:#f2efe6;border-radius:var(--radius);padding:28px 30px;margin-top:8px}
+.callout p{color:#d8d4c6;margin:0;font-size:16px}
+.callout p strong{color:#fff}
+
+/* ---------- figma live embed ---------- */
+.figma-embed{position:relative;width:100%;padding-top:62.5%;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin-top:18px}
+.figma-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+@media (max-width:640px){.figma-embed{padding-top:120%}}
+
+/* ---------- screens ---------- */
+.screens{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px;margin-top:30px}
+.screen-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 18px 24px;display:flex;flex-direction:column;align-items:center;
+}
+.phone{
+  width:100%;max-width:250px;border-radius:26px;overflow:hidden;
+  box-shadow:0 18px 40px -18px rgba(20,35,28,.35);border:1px solid #cfc4a8;background:var(--paper-deep);
+}
+.phone img{display:block;width:100%;height:auto}
+.phone.placeholder{
+  aspect-ratio:445/900;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border:2px dashed #c9bfa4;color:var(--ink-faint);font-size:13.5px;text-align:center;padding:20px;gap:8px;
+}
+.phone.placeholder .dot{
+  width:44px;height:44px;border-radius:50%;background:#e7dfcb;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+}
+.screen-card h4{font-size:16px;margin:18px 0 6px;font-weight:750}
+.screen-card .num{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.12em;margin-bottom:2px}
+.screen-card p{font-size:14px;color:var(--ink-soft);margin-bottom:10px;text-align:left;width:100%}
+.screen-card .decision{
+  background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:12px;
+  padding:10px 13px;font-size:13px;color:var(--ink);width:100%;
+}
+.screen-card .decision b{
+  display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:3px;
+}
+
+/* ---------- feature lists ---------- */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:24px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.feat b{display:block;margin-bottom:6px;font-size:15px}
+.feat span{font-size:14px;color:var(--ink-soft)}
+
+/* ---------- design system ---------- */
+.principles{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.principle{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.principle b{display:block;margin-bottom:6px;font-size:15px}
+.principle span{font-size:14px;color:var(--ink-soft)}
+
+/* ---------- what's next ---------- */
+.next-list{list-style:none;margin-top:6px;display:grid;gap:10px}
+.next-list li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;font-size:15px;color:var(--ink-soft)}
+.next-list li b{color:var(--ink)}
+.next-list li .tag{
+  display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:#8a6d2f;background:#f3ead2;border:1px solid #e2d3a8;border-radius:999px;
+  padding:2px 10px;margin-left:10px;vertical-align:1px;
+}
+
+/* ---------- outcomes ---------- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:24px}
+.stat{background:var(--dark);color:#f2efe6;border-radius:14px;padding:20px}
+.stat .n{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.stat .t{font-size:13.5px;color:#cfccc0;margin-top:4px}
+
+footer{
+  border-top:1px solid var(--line);padding:34px 0 48px;display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:12px;color:var(--ink-faint);font-size:14px;
+}
+footer a{color:var(--accent);font-weight:600;text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+</style>
+</head>
+<body class="parallel">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">Nabeel Mumtaz<small>Full Stack Software Engineer &amp; UX/UI Designer</small></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="returnit.html">Return It</a>
+      <a href="fleetfuel.html">FleetFuel</a>
+      <a href="rishtaaunty.html">RishtaAunty</a>
+      <a href="reptracker.html">RepTracker</a>
+      <a href="parallel.html" class="active">Parallel</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</nav>
+
+  <div class="hero">
+    <span class="kicker">UX Case Study · Chat App</span>
+    <h1>Parallel. <em>Type your tasks. Send once. Get everything back together.</em></h1>
+    <p class="lede">A chat app that looks and feels like ChatGPT — a plain conversation area and one prompt box pinned to the bottom — but works differently on send. You write several tasks in one message, one per line, and Parallel runs them all at the same time. Each task gets its own small block in a single reply, closing with one quiet line on how much time you saved. Answers come from an open-source model Parallel runs on its own hardware: no third-party AI brand, no sign-in, no API key field.</p>
+    <dl class="meta">
+      <div><dt>Role</dt><dd>Founder, Designer &amp; Engineer</dd></div>
+      <div><dt>Timeline</dt><dd>2026 – Present</dd></div>
+      <div><dt>Platform</dt><dd>Web + iOS</dd></div>
+      <div><dt>Status</dt><dd>Prototype in Figma Make</dd></div>
+    </dl>
+  </div>
+
+  <section>
+    <h2>The problem</h2>
+    <h3>Chat apps serialize your work.</h3>
+    <p>Every chat app makes you do one thing at a time: one message, one answer, wait, repeat. But real work comes in batches — a product description, social copy, an FAQ, a marketing outline, an email campaign. The workaround today is tabs and windows: copy the prompt five times, babysit five conversations, and stitch the answers together yourself.</p>
+    <p>Parallel's bet is one line: <strong>Type your tasks. Send once. Get everything back together.</strong> The interface looks deliberately familiar — a conversation area and one prompt box pinned to the bottom — so the only new thing to learn is that each line is its own task.</p>
+  </section>
+
+  <section>
+    <h2>The approach</h2>
+    <h3>Each line is a task. They all run at once.</h3>
+    <div class="two">
+      <div>
+        <p>On send, the prompt box drops to the bottom. Your message appears as a bubble with each line shown as its own row, and Parallel's reply lists one block per task. Every block shows a small "Running" label with a spinner — all of them at once. As soon as the model starts writing, each block swaps its label for the answer, streaming in word by word, with a small grey duration appearing when the task finishes. The send button turns into a stop button while anything is running.</p>
+      </div>
+      <div>
+        <p>When all tasks are done, one muted line closes the reply: <strong>"5 tasks done in 7.8 s · 52% faster than one at a time."</strong> The summary uses real numbers — one at a time is the sum of durations, parallel is the longest one. Copy and Retry icons appear under each answer on hover. No dashboards, no cards-everywhere, no extra screens.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <p><strong>Minimal on purpose.</strong> The first prototype used electric cyan on nearly everything and read as flat; the redesign restricts the accent to the send button, the spinner, and the focus ring. Everything else is greys and text. One screen, one accent color, no emoji — ChatGPT quiet, with parallel powers.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Live prototype</h2>
+    <h3>Explore the Figma prototype.</h3>
+    <p>This embed loads the live published site, so it updates as the designs evolve. <a href="https://spec-finch-59677506.figma.site" target="_blank" rel="noopener">Open the live site &rarr;</a></p>
+    <div class="figma-embed">
+      <iframe src="https://spec-finch-59677506.figma.site" allowfullscreen loading="lazy" title="Parallel live prototype"></iframe>
+    </div>
+  </section>
+
+  <section>
+    <h2>The screens</h2>
+    <h3>Five states, one screen.</h3>
+    <p>The whole app is a single screen that moves through five states. The prototype in Figma Make is a working React mock: each line of the sample message becomes a task, tasks run with simulated 2–6 second durations, and the summary line uses real numbers.</p>
+
+    <div class="screens">
+      <div class="screen-card">
+        <div class="num">01</div>
+        <div class="phone placeholder"><span class="dot">💬</span><span>In progress</span></div>
+        <h4>Empty</h4>
+        <p>A centered "What do you need done?" with the prompt box in the middle of the screen — ChatGPT's new-chat view. Three small suggestion pills sit underneath it. Placeholder: "Ask Parallel."</p>
+        <div class="decision"><b>Design decision</b>Familiarity is the onboarding. If it looks like ChatGPT, nobody has to learn the interface — only the idea that each line runs as its own task.</div>
+      </div>
+
+      <div class="screen-card">
+        <div class="num">02</div>
+        <div class="phone placeholder"><span class="dot">📨</span><span>In progress</span></div>
+        <h4>Sent</h4>
+        <p>The prompt box drops to the bottom. The user's message appears as a right-aligned bubble with each line shown as its own row. Enter sends; Shift+Enter adds a new line — a new task.</p>
+        <div class="decision"><b>Design decision</b>Shift+Enter is the whole interaction model, so the helper text under the box says it plainly: "Each line runs as its own task, all at the same time."</div>
+      </div>
+
+      <div class="screen-card">
+        <div class="num">03</div>
+        <div class="phone placeholder"><span class="dot">⏳</span><span>In progress</span></div>
+        <h4>Running</h4>
+        <p>One block per task, every block showing "Running" with a spinner at the same time. No progress bars — they imply a known total that a model doesn't have. The send button becomes a stop button.</p>
+        <div class="decision"><b>Design decision</b>Showing all tasks as Running simultaneously is the product promise made visible. It's the one moment the app brags about being parallel.</div>
+      </div>
+
+      <div class="screen-card">
+        <div class="num">04</div>
+        <div class="phone placeholder"><span class="dot">✨</span><span>In progress</span></div>
+        <h4>Done</h4>
+        <p>Answers stream in word by word as the model writes; each finished task gets a small grey duration ("2.4 s"). One muted line closes the reply: "5 tasks done in 7.8 s · 52% faster than one at a time."</p>
+        <div class="decision"><b>Design decision</b>The savings line is quiet because trust is at stake — local hardware shares power across tasks, so the mock stays at an honest 40–60% faster, never 80%+.</div>
+      </div>
+
+      <div class="screen-card">
+        <div class="num">05</div>
+        <div class="phone placeholder"><span class="dot">🖥️</span><span>In progress</span></div>
+        <h4>Engine states</h4>
+        <p>A small muted pill in the top bar reads "Local · Qwen 2.5 7B" — tapping it opens the installed-models menu. If the engine is offline, one muted line appears above the prompt box: "Parallel's engine isn't running. Start it and try again," with a Retry text button. No modal.</p>
+        <div class="decision"><b>Design decision</b>Self-hosted is a feature, so the UI shows the engine honestly: which model is running, and exactly what to do when it isn't — never an API key field for a third-party service.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Design principles</h2>
+    <h3>Five rules the screens follow.</h3>
+
+    <div class="principles">
+      <div class="principle"><b>🎨 Quiet by default</b><span>Cyan appears only on the send button, the spinner, and the focus ring. Text and greys do everything else — hierarchy without decoration.</span></div>
+      <div class="principle"><b>📝 Text does the work</b><span>No stat cards, no comparison charts, no "How it works" section. If a number matters, it lives in one muted sentence.</span></div>
+      <div class="principle"><b>⚖️ Honest about hardware</b><span>A local model sharing its GPU across tasks saves less than a cloud API. The design says 40–60% faster and means it.</span></div>
+      <div class="principle"><b>🖥️ One screen</b><span>No sign-in, no settings, no sidebar in v1. New chat clears the screen; follow-up batches just stack below.</span></div>
+      <div class="principle"><b>♿ Accessible by construction</b><span>Text contrast at least 4.5:1, visible focus rings on the prompt box and buttons, touch targets at least 44 × 44 pt.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What's next</h2>
+    <h3>From prototype to a local engine.</h3>
+    <p>Parallel runs an open-source model on its own hardware — Ollama on a Mac now, a GPU server running vLLM later — and the design already accounts for that transition.</p>
+    <ul class="next-list">
+      <li><b>Engine integration</b> — swap simulated durations for the real local model; the model chip and streaming states are already designed for it <span class="tag">Planned</span></li>
+      <li><b>iOS native</b> — same single-screen layout with a standard nav bar, plus a light haptic when each task finishes <span class="tag">Planned</span></li>
+      <li><b>Verified savings</b> — measure real parallel-vs-sequential time on the actual hardware and let the summary line report it <span class="tag">Planned</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Outcomes &amp; context</h2>
+    <h3>A design with the physics built in.</h3>
+    <p>Parallel is a rare design where the UX copy and the engineering are the same document: the summary line's math (one-at-a-time = sum of durations, parallel = longest) is specified in the brief, the streaming states map to how a local model actually emits tokens, and the savings figure is calibrated to shared hardware instead of cloud fantasy.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">5</div><div class="t">tasks from one message, one per line</div></div>
+      <div class="stat"><div class="n">52%</div><div class="t">mock savings line — honest local-hardware range</div></div>
+      <div class="stat"><div class="n">1</div><div class="t">screen — no extra views, settings, or sidebar</div></div>
+      <div class="stat"><div class="n">1</div><div class="t">accent color, on the send button and spinner only</div></div>
+    </div>
+    <p style="margin-top:22px">This is a design-in-progress case study, and I'm not dressing that up. The brief and the interaction states are done; Figma Make is building the React prototype now. This page will grow as the screens do.</p>
+  </section>
+
+<footer class="wrap">
+  <div>Designed &amp; built by <b>Nabeel Mumtaz</b> — Parallel, 2026–Present.</div>
+  <div><a href="https://github.com/nabeelmumtaz92" target="_blank" rel="noopener">github.com/nabeelmumtaz92 ↗</a></div>
+</footer>
+
+</body>
+</html>
