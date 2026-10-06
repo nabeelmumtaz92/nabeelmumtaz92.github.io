@@ -6,7 +6,7 @@
 <title>Return It — UX Case Study | Nabeel Mumtaz</title>
 <meta name="description" content="UX case study: designing the Return It customer app — on-demand doorstep return pickups. Designed and engineered by Nabeel Mumtaz, founder and team of one.">
 <style>
-/* Shared portfolio styles — House Call base, per-page accents via body class */
+/* Shared portfolio styles — per-page accents via body class */
 :root{
   --paper:#f6f2e9;
   --paper-deep:#efe8d8;
@@ -205,6 +205,7 @@ footer a:hover{text-decoration:underline}
       <a href="reptracker.html">RepTracker</a>
       <a href="parallel.html">Parallel</a>
       <a href="about.html">About</a>
+      <a href="resume.pdf" target="_blank" rel="noopener">Resume</a>
     </div>
   </div>
 </nav>
@@ -234,7 +235,7 @@ footer a:hover{text-decoration:underline}
     <h3>Designed the way the business runs: one person, end to end.</h3>
     <div class="two">
       <div>
-        <p>As founder, designer, and engineer, I don't hand designs over a wall — I design what I can ship. I prototyped the customer app in Figma Make to iterate on flows quickly, then built the <strong>"House Call" design system</strong> around the feeling the brand needs: a friendly neighbor knocking on your door, not a freight company.</p>
+        <p>As founder, designer, and engineer, I don't hand designs over a wall — I design what I can ship. I prototyped the customer app in Figma Make to iterate on flows quickly, then designed around the feeling the brand needs: a friendly neighbor knocking on your door, not a freight company.</p>
       </div>
       <div>
         <p>Warm stone-paper backgrounds, pine-green ink, dark action cards, and rounded, plain-spoken copy. Every screen answers one question within seconds: <strong>what happens next, and what does it cost.</strong> Pricing is never more than a glance away — trust is the product.</p>
@@ -296,8 +297,8 @@ footer a:hover{text-decoration:underline}
 
   <section>
     <h2>Design system</h2>
-    <h3>"House Call" — warm paper, pine ink.</h3>
-    <p>Named for what the service is: someone coming to your house to help. The system runs across every screen — stone-paper surfaces, pine-green ink, dark action cards, one rounded voice.</p>
+    <h3>Warm paper, pine ink.</h3>
+    <p>The system runs across every screen — stone-paper surfaces, pine-green ink, dark action cards, one rounded voice.</p>
 
     <div class="swatches">
       <div class="swatch"><div class="chip" style="background:#f6f1e6"></div><div class="lbl"><b>Stone Paper</b><span>~ #F6F1E6 · surfaces</span></div></div>
@@ -312,6 +313,19 @@ footer a:hover{text-decoration:underline}
       <div class="principle"><b>💲 Price always visible</b><span>$9.50 per pickup, $2 vs $6 for members — stated on the screen where the decision happens.</span></div>
       <div class="principle"><b>🟢 Status in plain words</b><span>In Transit, Assigned, Pending. If a customer can't read it aloud, it doesn't ship.</span></div>
       <div class="principle"><b>🖐️ One job per screen</b><span>Welcome sells, Home starts, Orders tracks. No screen does two things.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The platform</h2>
+    <h3>Engineered alongside the design, by the same person.</h3>
+    <div class="two">
+      <div>
+        <p><strong>Stack:</strong> Node.js + PostgreSQL (Drizzle ORM) on AWS. A 160-table schema covering orders, driver payouts, tax filings, and fraud detection; 657 REST endpoints across 18 route modules; 43 scheduled jobs running retailer discovery, payouts, and daily operations reporting.</p>
+      </div>
+      <div>
+        <p><strong>Reliability:</strong> a 1,000+ test Playwright suite — I root-caused every failure cluster and took the pass rate from 87.1% to 99.79%, closing real production vulnerabilities along the way. Stripe for payments, Twilio for messaging, eight AWS services, and LLM providers with automatic cross-provider failover. Three native apps shipped via Expo/EAS, plus a 168-page web app with a 44-page admin dashboard.</p>
+      </div>
     </div>
   </section>
 
