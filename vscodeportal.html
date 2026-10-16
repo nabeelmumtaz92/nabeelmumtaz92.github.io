@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VSCode Portal — Nabeel Mumtaz</title>
+<meta name="description" content="FleetFuel: a native iOS app delivering automatic cashback on fuel purchases for fleet drivers. Designed and engineered by Nabeel Mumtaz.">
+<style>
+/* Shared portfolio styles — per-page accents via body class */
+:root{
+  --paper:#f6f2e9;
+  --paper-deep:#efe8d8;
+  --card:#fffdf8;
+  --ink:#1c2420;
+  --ink-soft:#4a554f;
+  --ink-faint:#7b857e;
+  --line:#ddd3bd;
+  --accent:#1e4d38;
+  --accent-deep:#143526;
+  --accent-soft:#e4ecdf;
+  --accent-line:#cdd9c6;
+  --dark:#1b2b22;
+  --radius:18px;
+}
+body.fleetfuel{
+  --accent:#1b4d6b;
+  --accent-deep:#12334a;
+  --accent-soft:#e2ecf3;
+  --accent-line:#c3d5e2;
+  --dark:#14293a;
+}
+body.rishtaaunty{
+  --paper:#f8f3ea;
+  --paper-deep:#f1e8d8;
+  --line:#e3d6bd;
+  --accent:#8b2c2c;
+  --accent-deep:#651f1f;
+  --accent-soft:#f7e6e9;
+  --accent-line:#e3c2c8;
+  --dark:#3a2020;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:1080px;margin:0 auto;padding:13px 28px;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.nav .brand{font-weight:800;font-size:17px;color:var(--ink);text-decoration:none;line-height:1.3}
+.nav .brand small{display:block;font-weight:400;color:var(--ink-faint);font-size:11.5px}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{
+  font-size:14px;font-weight:600;color:var(--ink-soft);text-decoration:none;
+  padding:8px 15px;border-radius:999px;
+}
+.nav-links a:hover{background:var(--accent-soft);color:var(--accent-deep)}
+.nav-links a.active{background:var(--accent);color:#fff}
+
+/* ---------- hero ---------- */
+.hero{padding:72px 0 48px;text-align:left}
+.kicker{
+  display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-line);
+  padding:6px 14px;border-radius:999px;margin-bottom:22px;
+}
+.hero h1{font-size:clamp(38px,5.4vw,62px);line-height:1.08;letter-spacing:-.02em;font-weight:800;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lede{font-size:19px;color:var(--ink-soft);max-width:60ch;margin-top:18px}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:36px}
+.meta div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.meta dt{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+.meta dd{font-size:15px;font-weight:600;margin-top:4px}
+
+/* ---------- sections ---------- */
+section{padding:52px 0;border-top:1px solid var(--line)}
+section h2{font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+section h3{font-size:26px;letter-spacing:-.01em;margin-bottom:14px;font-weight:750}
+section p{color:var(--ink-soft);max-width:68ch;margin-bottom:14px;font-size:16.5px}
+section p strong{color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+
+.callout{background:var(--dark);color:#f2efe6;border-radius:var(--radius);padding:28px 30px;margin-top:8px}
+.callout p{color:#d8d4c6;margin:0;font-size:16px}
+.callout p strong{color:#fff}
+
+/* ---------- home project cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:34px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px;display:flex;flex-direction:column;position:relative;overflow:hidden;
+}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--card-accent,var(--accent))}
+.card .status{
+  display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--card-accent,var(--accent));background:var(--accent-soft);border:1px solid var(--accent-line);
+  border-radius:999px;padding:4px 12px;margin-bottom:16px;
+}
+.card h3{font-size:24px;margin-bottom:10px;font-weight:750}
+.card p{font-size:15px;color:var(--ink-soft);margin-bottom:14px}
+.card .stack{font-size:13px;color:var(--ink-faint);margin-bottom:22px}
+.card a.cta{
+  margin-top:auto;align-self:flex-start;font-size:14.5px;font-weight:700;color:#fff;text-decoration:none;
+  background:var(--card-accent,var(--accent));padding:10px 20px;border-radius:999px;
+}
+.card a.cta:hover{background:var(--accent-deep)}
+
+/* ---------- screens ---------- */
+.screens{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px;margin-top:30px}
+.screen-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 18px 24px;display:flex;flex-direction:column;align-items:center;
+}
+.phone{
+  width:100%;max-width:250px;border-radius:26px;overflow:hidden;
+  box-shadow:0 18px 40px -18px rgba(20,35,28,.35);border:1px solid #cfc4a8;background:var(--paper-deep);
+}
+.phone img{display:block;width:100%;height:auto}
+.phone.placeholder{
+  aspect-ratio:445/900;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border:2px dashed #c9bfa4;color:var(--ink-faint);font-size:13.5px;text-align:center;padding:20px;gap:8px;
+}
+.phone.placeholder .dot{
+  width:44px;height:44px;border-radius:50%;background:#e7dfcb;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+}
+.screen-card h4{font-size:16px;margin:18px 0 6px;font-weight:750}
+.screen-card .num{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:.12em;margin-bottom:2px}
+.screen-card p{font-size:14px;color:var(--ink-soft);margin-bottom:10px;text-align:left;width:100%}
+.screen-card .decision{
+  background:var(--accent-soft);border:1px solid var(--accent-line);border-radius:12px;
+  padding:10px 13px;font-size:13px;color:var(--ink);width:100%;
+}
+.screen-card .decision b{
+  display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:3px;
+}
+
+/* ---------- feature lists ---------- */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:24px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.feat b{display:block;margin-bottom:6px;font-size:15px}
+.feat span{font-size:14px;color:var(--ink-soft)}
+
+/* ---------- design system ---------- */
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:22px}
+.swatch{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.swatch .chip{height:86px}
+.swatch .lbl{padding:10px 13px;font-size:13px}
+.swatch .lbl b{display:block;font-size:13.5px}
+.swatch .lbl span{color:var(--ink-faint);font-family:ui-monospace,Menlo,monospace;font-size:12px}
+.principles{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.principle{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.principle b{display:block;margin-bottom:6px;font-size:15px}
+.principle span{font-size:14px;color:var(--ink-soft)}
+
+/* ---------- what's next ---------- */
+.next-list{list-style:none;margin-top:6px;display:grid;gap:10px}
+.next-list li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;font-size:15px;color:var(--ink-soft)}
+.next-list li b{color:var(--ink)}
+.next-list li .tag{
+  display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:#8a6d2f;background:#f3ead2;border:1px solid #e2d3a8;border-radius:999px;
+  padding:2px 10px;margin-left:10px;vertical-align:1px;
+}
+
+/* ---------- outcomes ---------- */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:24px}
+.stat{background:var(--dark);color:#f2efe6;border-radius:14px;padding:20px}
+.stat .n{font-size:30px;font-weight:800;letter-spacing:-.02em}
+.stat .t{font-size:13.5px;color:#cfccc0;margin-top:4px}
+
+footer{
+  border-top:1px solid var(--line);padding:34px 0 48px;display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:12px;color:var(--ink-faint);font-size:14px;
+}
+footer a{color:var(--accent);font-weight:600;text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* VSCode Portal: same dark theme as the phone app */
+body.vscodeportal{--paper:#1e1e1e;--paper-deep:#252526;--card:#252526;--ink:#e6e6e6;--ink-soft:#c2c2c2;--ink-faint:#8a8a8a;--line:#333;
+  --accent:#3b9cff;--accent-deep:#1f7fe0;--accent-soft:#1c2a3a;--accent-line:#2c4868;--dark:#111418}
+body.vscodeportal .callout{border:1px solid #2c4868}
+body.vscodeportal .tag{color:#dcdcaa;background:#2d2b20;border-color:#4a4630}
+body.vscodeportal .feat b{color:var(--ink)}
+body.vscodeportal .hero h1 em{color:var(--accent)}
+body.vscodeportal .claude{color:#d97757}
+.wide-shot{margin-top:26px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:0 18px 40px -22px rgba(0,0,0,.6)}
+.wide-shot img{display:block;width:100%;height:auto}
+.wide-shot.light{background:#fff;padding:18px}
+body.vscodeportal .wide-shot{box-shadow:0 18px 40px -18px rgba(0,0,0,.7)}
+</style>
+</head>
+<body class="vscodeportal">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">Nabeel Mumtaz<small>Full Stack Software Engineer &amp; UX/UI Designer</small></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="returnit.html">Return It</a>
+      <a href="fleetfuel.html">FleetFuel</a>
+      <a href="rishtaaunty.html">RishtaAunty</a>
+      <a href="reptracker.html">RepRewards</a>
+      <a href="parallel.html">Parallel</a>
+      <a href="vscodeportal.html" class="active">VSCode Portal</a>
+      <a href="about.html">About</a>
+      <a href="resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="hero">
+    <span class="kicker">Project · VS Code Extension + Phone App</span>
+    <h1>VSCode Portal. <em>Code from your iPhone.</em></h1>
+    <p class="lede">A VS Code extension that puts your real editor on your phone: ask Claude Code to make changes, edit files live, review diffs, commit and push, and run commands, all in the project on your Mac. Designed and built end to end by a team of one.</p>
+    <dl class="meta">
+      <div><dt>Role</dt><dd>Designer &amp; Engineer</dd></div>
+      <div><dt>Timeline</dt><dd>2026</dd></div>
+      <div><dt>Platform</dt><dd>VS Code · iPhone web app</dd></div>
+      <div><dt>Status</dt><dd>Working beta</dd></div>
+    </dl>
+    <div class="wide-shot"><img src="screens/vscodeportal-hero.jpg" alt="VSCode Portal on an iPhone: Claude Code fixing a failing test"></div>
+  </div>
+
+  <section>
+    <h2>The problem</h2>
+    <h3>You want to keep working, but you're away from your laptop.</h3>
+    <p>You're at the gym, or anywhere that isn't home, and all you have is your phone. An idea for the app hits between sets, or you remember a feature you've been meaning to build. You want to send the prompt <strong>now</strong>, before you forget it, and let it build while you're out, especially the big tasks you know will take a while.</p>
+    <p>But your code, your tools and your AI agent are all on the computer at home. Remote-desktop apps stream a tiny, blurry desktop that's painful to use over cellular, and cloud IDEs don't have your files, your git setup, or your project. <strong>What you actually want:</strong> to send a prompt from your phone, let it run on your real machine, and check the diff when you're done with your workout.</p>
+  </section>
+
+  <section>
+    <h2>The approach</h2>
+    <h3>Send data, not video.</h3>
+    <div class="two">
+      <div><p>Portal isn't screen sharing. The extension runs a small server inside VS Code and sends <strong>file text, diffs and chat messages</strong> instead of pixels. That keeps it fast and sharp on cellular, and lets every screen be designed for a phone instead of shrunk from a desktop.</p></div>
+      <div><p>Everything happens in the <strong>real VS Code window</strong>: edits typed on the phone appear on the Mac as you type, and edits made on the Mac show up on the phone. Claude Code runs in the actual project, with your own login.</p></div>
+    </div>
+    <div class="callout"><p><strong>Private by default.</strong> The server only listens on the Mac itself. The phone connects over an encrypted private network with a random access code, and the phone can only open files inside the workspace.</p></div>
+    <div class="wide-shot light"><img src="screens/vscodeportal-how.png" alt="How VSCode Portal connects a phone to VS Code on a Mac"></div>
+  </section>
+
+  <section>
+    <h2>Key features</h2>
+    <h3>The parts of VS Code you need on the go.</h3>
+    <div class="feat-grid">
+      <div class="feat"><b>✨ Claude Code from your phone</b><span>Type a request and watch the reply stream in. Every file edit and command appears as a card you can tap to see the diff. Three modes: auto-edit, plan only, and full access.</span></div>
+      <div class="feat"><b>📝 Live editor</b><span>Browse, search and edit with syntax highlighting and a row of code symbols above the keyboard. Follow mode keeps the phone on whatever file is open on the Mac.</span></div>
+      <div class="feat"><b>⎇ Changes</b><span>Branch, changed files and diffs, then commit and push, or let Claude write the commit message. Tap a problem to ask Claude to fix it.</span></div>
+      <div class="feat"><b>›_ Terminal</b><span>Run a command and read the output on the phone, or send it to the VS Code terminal on the Mac.</span></div>
+      <div class="feat"><b>🪟 Multiple windows</b><span>Each VS Code window gets its own port, so every open project is reachable from the phone.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Screens</h2>
+    <h3>Built for one thumb.</h3>
+    <p>Prompt, live editor, diff review and terminal, each designed for a phone rather than shrunk from a desktop layout.</p>
+    <div class="wide-shot"><img src="screens/vscodeportal-screens.jpg" alt="Four phone screens: Claude Code prompt, live editor, diff review, terminal"></div>
+  </section>
+
+  <section>
+    <h2>Roadmap</h2>
+    <h3>From my Mac to everyone's.</h3>
+    <ul class="next-list">
+      <li><b>Working beta</b>: extension and phone app, used daily on my own projects <span class="tag">Done</span></li>
+      <li><b>VS Code Marketplace</b>: publisher set up, listing ready <span class="tag">In progress</span></li>
+      <li><b>Zero-setup connection</b>: an end-to-end encrypted relay, so any phone connects by scanning a QR code, with same-Wi-Fi pairing too <span class="tag">In progress</span></li>
+      <li><b>Premium</b>: a free core with paid premium features <span class="tag">Planned</span></li>
+    </ul>
+  </section>
+</div>
+
+<footer class="wrap">
+  <div>Designed &amp; built by <b>Nabeel Mumtaz</b> — VSCode Portal, 2026.</div>
+  <div><a href="https://github.com/nabeelmumtaz92" target="_blank" rel="noopener">github.com/nabeelmumtaz92 ↗</a></div>
+</footer>
+
+</body>
+</html>
