@@ -97,26 +97,10 @@ section p strong{color:var(--ink)}
 .callout p{color:#d8d4c6;margin:0;font-size:16px}
 .callout p strong{color:#fff}
 
-/* ---------- home project cards ---------- */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:34px}
-.card{
-  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-  padding:28px;display:flex;flex-direction:column;position:relative;overflow:hidden;
-}
-.card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--card-accent,var(--accent))}
-.card .status{
-  display:inline-block;align-self:flex-start;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--card-accent,var(--accent));background:var(--accent-soft);border:1px solid var(--accent-line);
-  border-radius:999px;padding:4px 12px;margin-bottom:16px;
-}
-.card h3{font-size:24px;margin-bottom:10px;font-weight:750}
-.card p{font-size:15px;color:var(--ink-soft);margin-bottom:14px}
-.card .stack{font-size:13px;color:var(--ink-faint);margin-bottom:22px}
-.card a.cta{
-  margin-top:auto;align-self:flex-start;font-size:14.5px;font-weight:700;color:#fff;text-decoration:none;
-  background:var(--card-accent,var(--accent));padding:10px 20px;border-radius:999px;
-}
-.card a.cta:hover{background:var(--accent-deep)}
+/* ---------- figma live embed ---------- */
+.figma-embed{position:relative;width:100%;padding-top:62.5%;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);margin-top:18px}
+.figma-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+@media (max-width:640px){.figma-embed{padding-top:120%}}
 
 /* ---------- screens ---------- */
 .screens{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px;margin-top:30px}
@@ -215,7 +199,7 @@ footer a:hover{text-decoration:underline}
     <h1>Return It. <em>We'll pick it up.</em></h1>
     <p class="lede">Designing the customer app for an on-demand returns service — doorstep pickup of online returns, delivered back to the store by a local driver. I founded the company, designed the app in Figma, and I'm engineering it end to end: a team of one.</p>
     <dl class="meta">
-      <div><dt>Role</dt><dd>Founder, Designer &amp; Lead Engineer</dd></div>
+      <div><dt>Role</dt><dd>Founder, Lead Engineer &amp; Designer</dd></div>
       <div><dt>Timeline</dt><dd>2025 – Present</dd></div>
       <div><dt>Platform</dt><dd>iOS customer app</dd></div>
       <div><dt>Status</dt><dd>Live startup · designs in Figma</dd></div>
@@ -234,7 +218,7 @@ footer a:hover{text-decoration:underline}
     <h3>Designed the way the business runs: one person, end to end.</h3>
     <div class="two">
       <div>
-        <p>As founder, designer, and engineer, I don't hand designs over a wall — I design what I can ship. I prototyped the customer app in Figma Make to iterate on flows quickly, then designed around the feeling the brand needs: a friendly neighbor knocking on your door, not a freight company.</p>
+        <p>As founder, engineer, and designer, I don't hand designs over a wall — I design what I can ship. I prototyped the customer app in Figma Make to iterate on flows quickly, then designed around the feeling the brand needs: a friendly neighbor knocking on your door, not a freight company.</p>
       </div>
       <div>
         <p>Warm stone-paper backgrounds, pine-green ink, dark action cards, and rounded, plain-spoken copy. Every screen answers one question within seconds: <strong>what happens next, and what does it cost.</strong> Pricing is never more than a glance away — trust is the product.</p>
